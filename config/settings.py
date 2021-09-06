@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'django_extensions',
     # 'silk',
     'ratelimit',
+    'easy_select2',
+
 
     'rest_auth',
 ]
