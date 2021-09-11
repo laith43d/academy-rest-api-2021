@@ -20,5 +20,6 @@ def list_one_echos(request, echo_id: int, payload: EchoIn, echo_name: str):
 
 
 @test_api.post('/echo')
-def create_echo(request):
-    return {}
+def create_echo(request, payload: EchoIn):
+
+    return payload
