@@ -12,7 +12,7 @@ actors_controller = Router(tags=['actor'])
 #     return Actor.objects.all()
 
 
-@actors_controller.post("/create", response={201: ActorOut})
+@actors_controller.post("/create")
 def create_actor(request, payload: ActorIn):
     pob = payload.place_of_birth
     del payload.place_of_birth

@@ -3,6 +3,8 @@ import datetime
 from ninja import Schema
 from pydantic import EmailStr
 
+from config.utils.schemas import Token
+
 
 class AccountOut(Schema):
     email: EmailStr
@@ -28,7 +30,7 @@ class AccountSignupIn(Schema):
 
 class AccountSignupOut(Schema):
     profile: AccountOut
-    token: str
+    token: Token
 
 
 class AccountConfirmationIn(Schema):
@@ -48,7 +50,7 @@ class AccountUpdateIn(Schema):
 
 class AccountSigninOut(Schema):
     profile: AccountOut
-    token: str
+    token: Token
 
 
 class AccountSigninIn(Schema):
