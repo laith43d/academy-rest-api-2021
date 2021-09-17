@@ -7,7 +7,7 @@ from ninja import NinjaAPI
 from imdb.controllers.actors_controller import actors_controller
 from imdb.controllers.titles_controller import titles_controller
 # from rest_auth._controllers import test_api
-from rest_auth.controllers.auth import auth
+from rest_auth.controllers.auth_controller import auth_controller
 
 api = NinjaAPI(
     version='1.0.0',
@@ -18,7 +18,7 @@ api = NinjaAPI(
 # api.add_router('/test', test_api)
 api.add_router('/actor', actors_controller)
 api.add_router('/title', titles_controller)
-api.add_router('/auth', auth)
+api.add_router('/auth', auth_controller)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

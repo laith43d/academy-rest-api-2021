@@ -9,10 +9,10 @@ from rest_auth.schemas.email_account_schemas import AccountSignupOut, AccountSig
     AccountSigninIn, AccountOut, AccountUpdateIn, PasswordChangeIn
 from django.shortcuts import get_object_or_404
 
-auth = Router(tags=['auth'])
+auth_controller = Router(tags=['auth'])
 
 
-@auth.post('/register', response={200: AccountSignupOut, 403: MessageOut, 500: MessageOut})
+@auth_controller.post('/register', response={200: AccountSignupOut, 403: MessageOut, 500: MessageOut})
 def register(request, payload: AccountSignupIn):
     # if payload.password1 != payload.password2:
     #     return response(HTTPStatus.BAD_REQUEST, {'message': 'Passwords does not match!'})
@@ -35,7 +35,7 @@ def register(request, payload: AccountSignupIn):
     ...
 
 
-@auth.post('/login', response={200: AccountSigninOut, 404: MessageOut})
+@auth_controller.post('/login', response={200: AccountSigninOut, 404: MessageOut})
 def login(request, payload: AccountSigninIn):
     # user = authenticate(email=payload.email, password=payload.password)
     # if user is not None:
@@ -47,7 +47,7 @@ def login(request, payload: AccountSigninIn):
     ...
 
 
-@auth.get('/me',
+@auth_controller.get('/me',
           auth=AuthBearer(),
           response={200: AccountOut, 400: MessageOut})
 def me(request):
@@ -59,7 +59,7 @@ def me(request):
     ...
 
 
-@auth.put('/me',
+@auth_controller.put('/me',
           auth=AuthBearer(),
           response={200: AccountOut, 400: MessageOut})
 def update_me(request, user_in: AccountUpdateIn):
@@ -71,7 +71,7 @@ def update_me(request, user_in: AccountUpdateIn):
     ...
 
 
-@auth.post('/change-password',
+@auth_controller.post('/change-password',
            auth=AuthBearer(),
            response={200: MessageOut, 400: MessageOut})
 def change_password(request, payload: PasswordChangeIn):
