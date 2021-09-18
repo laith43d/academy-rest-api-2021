@@ -1,0 +1,56 @@
+POST localhost:8888/api/auth/login
+Content-Type: application/json
+Accept: application/json
+
+{
+  "email": "L@LZAH.online",
+  "password": "alfa01alfa01"
+}
+
+###
+POST localhost:8888/api/auth/register
+Content-Type: application/json
+Accept: application/json
+
+{
+  "first_name": "Human",
+  "last_name": "Being",
+  "email": "user@example.com",
+  "password1": "stinger!!",
+  "password2": "stinger!!"
+}
+
+###
+GET localhost:8888/api/auth/me
+Accept: application/json
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM2NjA3YjQzLWE2YWUtNGRkNC1hMzhjLTBkYTUxNGYwMTMxYyIsImV4cCI6MTYzNzEwMjQ2NCwic3ViIjoiYWNjZXNzIn0.LOkWLB7toczyvZssRUmPoruhpgtQN0xf7dHJYJQfZdU
+
+
+###
+PUT localhost:8888/api/auth/me
+Accept: application/json
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNDQxNTBmLWIyODMtNGIwNy05YTgwLTY1Nzk0YTgxZTgzYyIsImV4cCI6MTYzNzEwMzEyMSwic3ViIjoiYWNjZXNzIn0.JDk_a04O7P-hR_H3x9Orp0i8LMI2-GReOn-R6V1lDxs
+
+{
+  "first_name": "string",
+  "last_name": "string",
+  "phone_number": "string",
+  "address1": "string",
+  "address2": "string",
+  "company_name": "string",
+  "company_website": "string"
+}
+
+###
+POST localhost:8888/api/auth/change-password
+Content-Type: application/json
+Accept: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM2NjA3YjQzLWE2YWUtNGRkNC1hMzhjLTBkYTUxNGYwMTMxYyIsImV4cCI6MTYzNzEwMjQ2NCwic3ViIjoiYWNjZXNzIn0.LOkWLB7toczyvZssRUmPoruhpgtQN0xf7dHJYJQfZdU
+
+{
+  "old_password": "alfa01",
+  "new_password1": "alfa01alfa01",
+  "new_password2": "alfa01alfa01"
+}

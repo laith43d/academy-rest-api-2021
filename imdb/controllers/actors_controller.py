@@ -44,6 +44,36 @@ def update_actor(request, actor_id: int, payload: ActorIn):
     return 200, {"success": True}
 
 
+@actors_controller.patch("/update/{actor_id}")
+def update_actor(request, actor_id: int, payload: ActorIn):
+    pob = payload.place_of_birth
+    del payload.place_of_birth
+    actor = get_object_or_404(Actor, id=actor_id)
+    for attr, value in payload.dict().items():
+        if value:
+            setattr(actor, attr, value)
+
+    if pob:
+        actor.place_of_birth_id = pob
+    actor.save()
+    return 200, {"success": True}
+
+
+@actors_controller.api_operation(['PUT', 'PATCH'], "/update/{actor_id}")
+def update_actor(request, actor_id: int, payload: ActorIn):
+    pob = payload.place_of_birth
+    del payload.place_of_birth
+    actor = get_object_or_404(Actor, id=actor_id)
+    for attr, value in payload.dict().items():
+        if value:
+            setattr(actor, attr, value)
+
+    if pob:
+        actor.place_of_birth_id = pob
+    actor.save()
+    return 200, {"success": True}
+
+
 @actors_controller.delete("/delete/{actor_id}")
 def delete_actor(request, actor_id: int):
     actor = get_object_or_404(Actor, id=actor_id)

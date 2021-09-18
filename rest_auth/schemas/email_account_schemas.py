@@ -10,7 +10,6 @@ class AccountOut(Schema):
     email: EmailStr
     first_name: str = None
     last_name: str = None
-    api_key: str
     phone_number: str = None
     address1: str = None
     address2: str = None

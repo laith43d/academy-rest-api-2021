@@ -13,9 +13,9 @@ class PlaceOut(Schema):
 
 
 class ActorSchema(Schema):
-    name: str
-    bio: str
-    date_of_birth: date
+    name: str = None
+    bio: str = None
+    date_of_birth: date = None
 
 
 class ActorOut(ActorSchema):
@@ -24,7 +24,7 @@ class ActorOut(ActorSchema):
 
 
 class ActorIn(ActorSchema):
-    place_of_birth: int
+    place_of_birth: int = None
 
 #
 # PlaceAutoOut = create_schema(Place, exclude=['location'])

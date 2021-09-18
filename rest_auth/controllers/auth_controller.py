@@ -32,7 +32,7 @@ def register(request, payload: AccountSignupIn):
     #         })
     #     else:
     #         return response(HTTPStatus.INTERNAL_SERVER_ERROR, {'message': 'An error occurred, please try again.'})
-    ...
+    pass
 
 
 @auth_controller.post('/login', response={200: AccountSigninOut, 404: MessageOut})
@@ -44,42 +44,42 @@ def login(request, payload: AccountSigninIn):
     #         'token': create_token(user.id)
     #     })
     # return response(HTTPStatus.NOT_FOUND, {'message': 'User not found'})
-    ...
+    pass
 
 
 @auth_controller.get('/me',
-          auth=AuthBearer(),
-          response={200: AccountOut, 400: MessageOut})
+                     auth=AuthBearer(),
+                     response={200: AccountOut, 400: MessageOut})
 def me(request):
     # try:
-    #     user = get_object_or_404(EmailAccount, id=request.auth)
+    #     user = get_object_or_404(EmailAccount, id=request.auth.id)
     # except:
     #     return response(HTTPStatus.BAD_REQUEST, {'message': 'token missing'})
     # return response(HTTPStatus.OK, user)
-    ...
+    pass
 
 
 @auth_controller.put('/me',
-          auth=AuthBearer(),
-          response={200: AccountOut, 400: MessageOut})
+                     auth=AuthBearer(),
+                     response={200: AccountOut, 400: MessageOut})
 def update_me(request, user_in: AccountUpdateIn):
-    # EmailAccount.objects.filter(id=request.auth).update(**user_in.dict())
-    # user = get_object_or_404(EmailAccount, id=request.auth)
-    # if not user:
-    #     return response(HTTPStatus.BAD_REQUEST, data={'message': 'something went wrong'})
-    # return response(HTTPStatus.OK, user)
-    ...
+    #     EmailAccount.objects.filter(id=request.auth.id).update(**user_in.dict())
+    #     user = get_object_or_404(EmailAccount, id=request.auth.id)
+    #     if not user:
+    #         return response(HTTPStatus.BAD_REQUEST, data={'message': 'something went wrong'})
+    #     return response(HTTPStatus.OK, user)
+    pass
 
 
 @auth_controller.post('/change-password',
-           auth=AuthBearer(),
-           response={200: MessageOut, 400: MessageOut})
+                      auth=AuthBearer(),
+                      response={200: MessageOut, 400: MessageOut})
 def change_password(request, payload: PasswordChangeIn):
     # if payload.new_password1 != payload.new_password2:
     #     return response(HTTPStatus.BAD_REQUEST, {'message': 'Passwords do not match!'})
     #
     # try:
-    #     user = get_object_or_404(EmailAccount, id=request.auth)
+    #     user = get_object_or_404(EmailAccount, id=request.auth.id)
     # except:
     #     return response(HTTPStatus.BAD_REQUEST, {'message': 'token missing'})
     #
@@ -91,4 +91,4 @@ def change_password(request, payload: PasswordChangeIn):
     #     return response(HTTPStatus.OK, {'message': 'password updated'})
     #
     # return response(HTTPStatus.BAD_REQUEST, {'message': 'something went wrong, please try again later'})
-    ...
+    pass
