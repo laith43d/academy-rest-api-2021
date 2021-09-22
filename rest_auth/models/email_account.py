@@ -34,6 +34,7 @@ class EmailAccountManager(UserManager):
         return user
 
 
+# always use a custom user model, for future proofness, and you should declare it in the settings.py file
 class EmailAccount(AbstractUser, Entity):
     username = models.NOT_PROVIDED
     email = models.EmailField(_('email address'), unique=True)
