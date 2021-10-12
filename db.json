@@ -1,0 +1,105 @@
+[
+  {
+    "model": "imdb.actor",
+    "pk": 1,
+    "fields": {
+      "name": "string",
+      "photo": "actors/23574163_1747475685263248_466873972_n.jpg",
+      "date_of_birth": "2021-09-13",
+      "place_of_birth": 1,
+      "bio": "string"
+    }
+  },
+  {
+    "model": "imdb.actor",
+    "pk": 2,
+    "fields": {
+      "name": "Leonardo De Caperio",
+      "photo": "actors/23574163_1747475685263248_466873972_n_aE1lymR.jpg",
+      "date_of_birth": "2021-09-11",
+      "place_of_birth": 1,
+      "bio": "Bio"
+    }
+  },
+  {
+    "model": "imdb.actor",
+    "pk": 3,
+    "fields": {
+      "name": "Sansa Stark",
+      "photo": "actors/23574163_1747475685263248_466873972_n_rP5wJ5X.jpg",
+      "date_of_birth": "2021-09-13",
+      "place_of_birth": 1,
+      "bio": "Daughter of Al-Stark"
+    }
+  },
+  {
+    "model": "imdb.place",
+    "pk": 1,
+    "fields": {
+      "name": "Baghdad",
+      "location": 1.2
+    }
+  },
+  {
+    "model": "imdb.title",
+    "pk": 1,
+    "fields": {
+      "name": "Movie that rocks",
+      "description": "test",
+      "storyline": "test",
+      "stars": [
+        1,
+        2
+      ],
+      "genres": [
+        2
+      ]
+    }
+  },
+  {
+    "model": "imdb.title",
+    "pk": 2,
+    "fields": {
+      "name": "GoT",
+      "description": "GoT",
+      "storyline": "Good",
+      "stars": [
+        2,
+        3
+      ],
+      "genres": [
+        1,
+        3,
+        4
+      ]
+    }
+  },
+  {
+    "model": "imdb.genre",
+    "pk": 1,
+    "fields": {
+      "name": "Action"
+    }
+  },
+  {
+    "model": "imdb.genre",
+    "pk": 2,
+    "fields": {
+      "name": "Biography"
+    }
+  },
+  {
+    "model": "imdb.genre",
+    "pk": 3,
+    "fields": {
+      "name": "Thriller"
+    }
+  },
+  {
+    "model": "imdb.genre",
+    "pk": 4,
+    "fields": {
+      "name": "Sci-Fi"
+    }
+  }
+]

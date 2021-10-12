@@ -44,10 +44,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'silk',
     'corsheaders',
     'ckeditor',
     'django_extensions',
-    # 'silk',
     'ratelimit',
     'easy_select2',
 
@@ -65,7 +65,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'silk.middleware.SilkyMiddleware',
+    'silk.middleware.SilkyMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -152,10 +152,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # SILKY_ANALYZE_QUERIES = True
 # SILKY_META = True
 
-SILKY_PYTHON_PROFILER = True
-SILKY_PYTHON_PROFILER_BINARY = True
-SILKY_ANALYZE_QUERIES = True
-SILKY_PYTHON_PROFILER_RESULT_PATH = 'profile/'
+# SILKY_PYTHON_PROFILER = True
+# SILKY_PYTHON_PROFILER_BINARY = True
+# SILKY_ANALYZE_QUERIES = True
+# SILKY_PYTHON_PROFILER_RESULT_PATH = 'profile/'
 
 CORS_ALLOW_ALL_ORIGINS = True
 

@@ -13,7 +13,7 @@ from django.shortcuts import get_object_or_404
 auth_controller = Router(tags=['auth'])
 
 
-@auth_controller.post('/register', response={200: AccountSignupOut, 403: MessageOut, 500: MessageOut})
+@auth_controller.post('/register', response={200: AccountSignupOut, 403: MessageOut, 400: MessageOut, 500: MessageOut})
 def register(request, payload: AccountSignupIn):
     if payload.password1 != payload.password2:
         return response(HTTPStatus.BAD_REQUEST, {'message': 'Passwords do not match!'})
@@ -52,12 +52,13 @@ def login(request, payload: AccountSigninIn):
                      auth=AuthBearer(),
                      response={200: AccountOut, 400: MessageOut})
 def me(request):
-    try:
-        user = get_object_or_404(EmailAccount, id=request.auth.id)
-    except:
-        return response(HTTPStatus.BAD_REQUEST, {'message': 'token missing'})
-    return response(HTTPStatus.OK, user)
+    # try:
+    #     user = get_object_or_404(EmailAccount, id=request.auth.id)
+    # except:
+    #     return response(HTTPStatus.BAD_REQUEST, {'message': 'token missing'})
+    # return response(HTTPStatus.OK, user)
     # pass
+    return response(HTTPStatus.OK, get_object_or_404(EmailAccount, id=request.auth.id))
 
 
 @auth_controller.put('/me',

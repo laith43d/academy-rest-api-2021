@@ -25,10 +25,11 @@ def retrieve_actor(request, actor_id: int):
     return get_object_or_404(Actor, id=actor_id)
 
 
+
 @actors_controller.get("/list", response=List[ActorOut])
 def list_actors(request):
     # qs = Actor.objects.filter(place_of_birth__name='Layth').prefetch_related('place_of_birth')
-    return Actor.objects.all()
+    return Actor.objects.all().select_related('place_of_birth')
 
 
 @actors_controller.put("/update/{actor_id}")
