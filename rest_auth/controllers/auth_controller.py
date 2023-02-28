@@ -23,9 +23,12 @@ def register(request, payload: AccountSignupIn):
         return response(403,
                         {'message': 'Forbidden, email is already registered'})
     except EmailAccount.DoesNotExist:
-        user = EmailAccount.objects.create_user(first_name=payload.first_name, last_name=payload.last_name,
-                                                email=payload.email, password=payload.password1)
-        if user:
+        if user := EmailAccount.objects.create_user(
+            first_name=payload.first_name,
+            last_name=payload.last_name,
+            email=payload.email,
+            password=payload.password1,
+        ):
             token = create_token(user.id)
             return response(HTTPStatus.OK, {
                 'profile': user,
@@ -65,11 +68,15 @@ def me(request):
                      auth=AuthBearer(),
                      response={200: AccountOut, 400: MessageOut})
 def update_me(request, user_in: AccountUpdateIn):
-        EmailAccount.objects.filter(id=request.auth.id).update(**user_in.dict())
-        user = get_object_or_404(EmailAccount, id=request.auth.id)
-        if not user:
-            return response(HTTPStatus.BAD_REQUEST, data={'message': 'something went wrong'})
-        return response(HTTPStatus.OK, user)
+    EmailAccount.objects.filter(id=request.auth.id).update(**user_in.dict())
+    user = get_object_or_404(EmailAccount, id=request.auth.id)
+    return (
+        response(HTTPStatus.OK, user)
+        if user
+        else response(
+            HTTPStatus.BAD_REQUEST, data={'message': 'something went wrong'}
+        )
+    )
     # pass
 
 
